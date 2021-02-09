@@ -54,9 +54,10 @@ class DameFormats():
                 l.append(row)
         return l
 
-    def num_columns_in_csv(self, csvpath):
+    def num_columns_in_csv(self, csvpath,  *args, **kwargs):
+        delimiter = kwargs.get('delimiter', ',')                        
         with open(csvpath, 'r') as csvfile:
             first_line = csvfile.readline()
-            ncol = first_line.count(',') + 1
+            ncol = first_line.count(delimiter) + 1
         return ncol
     
