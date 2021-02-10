@@ -24,6 +24,7 @@ import unicodedata
 import re
 import os
 import csv
+from xml.dom import minidom
 
 class DameFormats():
             
@@ -60,4 +61,5 @@ class DameFormats():
             first_line = csvfile.readline()
             ncol = first_line.count(delimiter) + 1
         return ncol
+    
     
