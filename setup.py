@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# Copyright (C) 2019  David Arroyo Menéndez
+# Copyright (C) 2021  David Arroyo Menéndez
 
 # Author: David Arroyo Menéndez <davidam@gnu.org>
 # Maintainer: David Arroyo Menéndez <davidam@gnu.org>
@@ -17,7 +17,7 @@
 # GNU General Public License for more details.
 
 # You should have received a copy of the GNU General Public License
-# along with damepandas; see the file COPYING.  If not, write to
+# along with dameformats; see the file COPYING.  If not, write to
 # the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA,
 
@@ -39,7 +39,7 @@ with open(path.join(this_directory, 'README.md')) as f:
 
     
 setup(name='dameformats',
-      version='0.0.1',
+      version='0.0.5',
       description='Learning Formats from Tests by David Arroyo Menéndez',
       long_description=long_description,
       classifiers=[
@@ -53,11 +53,12 @@ setup(name='dameformats',
       author='David Arroyo Menéndez',
       author_email='davidam@gnu.org',
       license='GPLv3',
-      packages=['dameformats', 'dameformats.tests', 'dameformats.files'],
-      package_dir={'dameformats': 'dameformats', 'dameformats.tests': 'dameformats/tests', 'dameformats.files': 'dameformats/files'},
+      packages=['dameformats', 'dameformats.src', 'dameformats.tests', 'dameformats.files'],
+      package_dir={'dameformats': 'dameformats', 'dameformats.src': 'dameformats/src', 'dameformats.tests': 'dameformats/tests', 'dameformats.files': 'dameformats/files'},
       package_data={'dameformats.tests': ['*'],
+                    'dameformats.src': ['*'],
                     'dameformats.files': ['*']},
-      data_files=[('dameformats', ['dameformats/runtests.sh', 'dameformats/files/exer1-interface-data.json'])],
+      data_files=[('dameformats', ['dameformats/runtests.sh', 'dameformats/files/exer1-interface-data.json', 'dameformats/files/partial.csv', 'dameformats/files/min.csv', 'dameformats/files/items.xml', 'dameformats/files/rss.xml', 'dameformats/files/test.nc'])],
       install_requires=[
           'markdown',
       ],
