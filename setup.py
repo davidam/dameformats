@@ -37,9 +37,9 @@ this_directory = path.abspath(path.dirname(__file__))
 with open(path.join(this_directory, 'README.md')) as f:
     long_description = f.read()
 
-    
+
 setup(name='dameformats',
-      version='0.0.5',
+      version='0.0.6',
       description='Learning Formats from Tests by David Arroyo Menéndez',
       long_description=long_description,
       classifiers=[
@@ -61,6 +61,7 @@ setup(name='dameformats',
       data_files=[('dameformats', ['dameformats/runtests.sh', 'dameformats/files/exer1-interface-data.json', 'dameformats/files/partial.csv', 'dameformats/files/min.csv', 'dameformats/files/items.xml', 'dameformats/files/rss.xml', 'dameformats/files/test.nc'])],
       install_requires=[
           'markdown',
+          'pyyaml',
       ],
       test_suite='setup.my_test_suite',
       include_package_data=True,
