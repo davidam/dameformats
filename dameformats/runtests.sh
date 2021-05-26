@@ -19,4 +19,5 @@
 # the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA,
 
-python3 -m unittest discover -s tests
+#python3 -m unittest discover -s tests
+pytest-3 tests
