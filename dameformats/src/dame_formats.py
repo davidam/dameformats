@@ -26,40 +26,39 @@ import os
 import csv
 from xml.dom import minidom
 
+
 class DameFormats():
-            
+
     def csvcolumn2list(self, csvpath,  *args, **kwargs):
         # make a list from a column in a csv file
         position = kwargs.get('position', 0)
         header = kwargs.get('header', True)
-        delimiter = kwargs.get('delimiter', ',')        
-        l = []
+        delimiter = kwargs.get('delimiter', ',')
+        l1 = []
         with open(csvpath) as csvfile:
             csvreader = csv.reader(csvfile, delimiter=delimiter, quotechar='|')
-            if (header == True):
+            if header:
                 next(csvreader, None)
             for row in csvreader:
-                l.append(row[position])
-        return l
+                l1.append(row[position])
+        return l1
 
     def csv2list(self, csvpath,  *args, **kwargs):
         # make a list from a csv file
         header = kwargs.get('header', False)
-        delimiter = kwargs.get('delimiter', ',')                
-        l = []
+        delimiter = kwargs.get('delimiter', ',')
+        l1 = []
         with open(csvpath) as csvfile:
             csvreader = csv.reader(csvfile, delimiter=delimiter, quotechar='|')
-            if (header == True):
-                next(csvreader, None)            
+            if header:
+                next(csvreader, None)
             for row in csvreader:
-                l.append(row)
-        return l
+                l1.append(row)
+        return l1
 
     def num_columns_in_csv(self, csvpath,  *args, **kwargs):
-        delimiter = kwargs.get('delimiter', ',')                        
+        delimiter = kwargs.get('delimiter', ',')
         with open(csvpath, 'r') as csvfile:
             first_line = csvfile.readline()
             ncol = first_line.count(delimiter) + 1
         return ncol
-    
-    
