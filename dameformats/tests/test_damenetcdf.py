@@ -26,6 +26,7 @@ import json
 from netCDF4 import Dataset
 from pprint import pprint
 
+
 class TestDameNetCDF(unittest.TestCase):
 
     def test_damenetcdf_new(self):
@@ -34,6 +35,6 @@ class TestDameNetCDF(unittest.TestCase):
         self.assertEqual(rootgrp.groups, {})
         rootgrp.close()
 
-        
+
 if __name__ == '__main__':
     unittest.main()
