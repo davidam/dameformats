@@ -26,26 +26,37 @@ import pandas as pd
 
 from src.dame_formats import DameFormats
 
+
 class TestDameCsv(unittest.TestCase):
 
     def test_damecsv_csvcolumn2list(self):
         du = DameFormats()
-        l = du.csvcolumn2list('files/partial.csv', 0, header=True)
-        self.assertEqual(len(l), 21)
-        self.assertEqual(['"pierre"', '"raul"', '"adriano"', '"ralf"', '"teppei"', '"guillermo"', '"catherine"', '"sabina"', '"ralf"', '"karl"', '"sushil"', '"clemens"', '"gregory"', '"lester"', '"claude"', '"martin"', '"vlad"', '"pasquale"', '"lourdes"', '"bruno"', '"thomas"'], l)
+        l1 = du.csvcolumn2list('files/partial.csv', 0, header=True)
+        self.assertEqual(len(l1), 21)
+        self.assertEqual(['"pierre"', '"raul"', '"adriano"', '"ralf"',
+                          '"teppei"', '"guillermo"', '"catherine"', '"sabina"',
+                          '"ralf"', '"karl"', '"sushil"', '"clemens"',
+                          '"gregory"', '"lester"', '"claude"', '"martin"',
+                          '"vlad"', '"pasquale"', '"lourdes"', '"bruno"',
+                          '"thomas"'], l1)
 
     def test_damecsv_csv2list(self):
         du = DameFormats()
-        l = du.csv2list('files/min.csv')
-        self.assertEqual(['"first_name"', '"middle_name"', '"last_name"', '"full_name"', '"gender"', '"origin"'], l[0])
-        self.assertEqual(['"pierre"', '"paul"', '"grivel"', '"pierre paul grivel"', '"m"', '"zbmath"'], l[1])
-        self.assertEqual(['"raul"', '""', '"serapioni"', '"raul serapioni"', '"m"', '"zbmath"'], l[2])
+        l1 = du.csv2list('files/min.csv')
+        self.assertEqual(['"first_name"', '"middle_name"',
+                          '"last_name"', '"full_name"', '"gender"',
+                          '"origin"'], l1[0])
+        self.assertEqual(['"pierre"', '"paul"', '"grivel"',
+                          '"pierre paul grivel"', '"m"', '"zbmath"'],
+                         l1[1])
+        self.assertEqual(['"raul"', '""', '"serapioni"', '"raul serapioni"',
+                          '"m"', '"zbmath"'], l1[2])
 
     def test_damecsv_num_columns_in_csv(self):
         du = DameFormats()
         n = du.num_columns_in_csv('files/partial.csv')
         self.assertEqual(n, 6)
-        
+
 
 if __name__ == '__main__':
     unittest.main()
