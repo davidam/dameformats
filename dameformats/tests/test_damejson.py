@@ -25,6 +25,7 @@ import unittest
 import json
 import pandas as pd
 
+
 class TestDameJson(unittest.TestCase):
 
     def test_damejson_load(self):
@@ -35,17 +36,23 @@ class TestDameJson(unittest.TestCase):
         fh.close()
         self.assertEqual(int(json_object['totalCount']), 400)
 
-
     def test_damejson_dumps(self):
-        self.assertEqual('["foo", {"bar": ["baz", 1.0, 2]}]', json.dumps(['foo', {'bar': ('baz', 1.0, 2)}]))
-        self.assertEqual(json.dumps({"c": 0, "b": 0, "a": 0}, sort_keys=True), '{"a": 0, "b": 0, "c": 0}')
-        tup1 = 'Red', 'Black', 'White';
+        self.assertEqual('["foo", {"bar": ["baz", 1.0, 2]}]',
+                         json.dumps(['foo', {'bar': ('baz', 1.0, 2)}]))
+        self.assertEqual(json.dumps({"c": 0, "b": 0, "a": 0}, sort_keys=True),
+                         '{"a": 0, "b": 0, "c": 0}')
+        tup1 = 'Red', 'Black', 'White'
         self.assertEqual(json.dumps(tup1), '["Red", "Black", "White"]')
 
     def test_damejson_pandas(self):
-        df = pd.DataFrame([['a', 'b'], ['c', 'd']], index=['row 1', 'row 2'], columns=['col 1', 'col 2'])
+        df = pd.DataFrame([['a', 'b'], ['c', 'd']],
+                          index=['row 1', 'row 2'],
+                          columns=['col 1', 'col 2'])
         split = df.to_json(orient='split')
-        self.assertEqual('{"columns":["col 1","col 2"],"index":["row 1","row 2"],"data":[["a","b"],["c","d"]]}', split)
+        string1 = '{"columns":["col 1","col 2"],'
+        string1 = string1 + '"index":["row 1","row 2"],'
+        string1 = string1 + '"data":[["a","b"],["c","d"]]}'
+        self.assertEqual(string1, split)
         l = df.to_json(orient='values')
         self.assertEqual('[["a","b"],["c","d"]]', l)
         rec = df.to_json(orient='records')
