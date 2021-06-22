@@ -28,6 +28,7 @@ from xml.dom import minidom
 
 import xml.etree.ElementTree as ET
 
+
 class TestDameJson(unittest.TestCase):
 
     def test_damexml_getelementsbytagname(self):
@@ -35,18 +36,19 @@ class TestDameJson(unittest.TestCase):
         xmldoc = minidom.parse('files/items.xml')
         itemlist = xmldoc.getElementsByTagName('item')
         self.assertEqual(len(itemlist), 4)
-        l = []
+        l1 = []
         for s in itemlist:
-            l.append(s.attributes['name'].value)
-        self.assertEqual(l, ['item1', 'item2', 'item3', 'item4'])
+            l1.append(s.attributes['name'].value)
+        self.assertEqual(l1, ['item1', 'item2', 'item3', 'item4'])
 
     def test_damexml_rss_titles(self):
         tree = ET.parse('files/rss.xml')
-        l = []
+        l1 = []
         for elem in tree.iter():
             if (elem.tag == "title"):
-                l.append(elem.text)
-        self.assertEqual(l[0:2], ["Richard Stallman's Political Notes", 'Economic growth and fossil fuels'])
+                l1.append(elem.text)
+        self.assertEqual(l1[0:2], ["Richard Stallman's Political Notes",
+                                   'Economic growth and fossil fuels'])
 
 
 if __name__ == '__main__':
