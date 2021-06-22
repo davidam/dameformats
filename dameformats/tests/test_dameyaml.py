@@ -26,6 +26,7 @@ import json
 import pandas as pd
 import yaml
 
+
 class TestDameYaml(unittest.TestCase):
 
     def test_dameyaml_load(self):
@@ -35,11 +36,19 @@ class TestDameYaml(unittest.TestCase):
         self.assertEqual(len(yaml_content.items()), 7)
 
     def test_dameyaml_dumps(self):
-        dict_file = [{'sports' : ['soccer', 'football', 'basketball', 'cricket', 'hockey', 'table tennis']},
-{'countries' : ['Pakistan', 'USA', 'India', 'China', 'Germany', 'France', 'Spain']}]
+        dict_file = [{'sports':
+                      ['soccer', 'football',
+                       'basketball', 'cricket',
+                       'hockey', 'table tennis']},
+                     {'countries':
+                      ['Pakistan', 'USA',
+                       'India', 'China',
+                       'Germany', 'France',
+                       'Spain']}]
         with open(r'files/dump_file.yaml', 'w') as file:
             documents = yaml.dump(dict_file, file)
         self.assertFalse(documents)
+
 
 if __name__ == '__main__':
     unittest.main()
