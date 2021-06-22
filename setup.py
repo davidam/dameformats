@@ -39,7 +39,7 @@ with open(path.join(this_directory, 'README.md')) as f:
 
 
 setup(name='dameformats',
-      version='0.0.6',
+      version='0.0.11',
       description='Learning Formats from Tests by David Arroyo Menéndez',
       long_description=long_description,
       classifiers=[
@@ -58,7 +58,7 @@ setup(name='dameformats',
       package_data={'dameformats.tests': ['*'],
                     'dameformats.src': ['*'],
                     'dameformats.files': ['*']},
-      data_files=[('dameformats', ['dameformats/runtests.sh', 'dameformats/files/exer1-interface-data.json', 'dameformats/files/partial.csv', 'dameformats/files/min.csv', 'dameformats/files/items.xml', 'dameformats/files/rss.xml', 'dameformats/files/test.nc'])],
+      data_files=[('dameformats', ['dameformats/runtests.sh', 'dameformats/files/exer1-interface-data.json', 'dameformats/files/partial.csv', 'dameformats/files/min.csv', 'dameformats/files/items.xml', 'dameformats/files/rss.xml', 'dameformats/files/test.nc', 'dameformats/files/example.yaml'])],
       install_requires=[
           'markdown',
           'pyyaml',
