@@ -53,10 +53,12 @@ class TestDameJson(unittest.TestCase):
         string1 = string1 + '"index":["row 1","row 2"],'
         string1 = string1 + '"data":[["a","b"],["c","d"]]}'
         self.assertEqual(string1, split)
-        l = df.to_json(orient='values')
-        self.assertEqual('[["a","b"],["c","d"]]', l)
+        l1 = df.to_json(orient='values')
+        self.assertEqual('[["a","b"],["c","d"]]', l1)
         rec = df.to_json(orient='records')
-        self.assertEqual('[{"col 1":"a","col 2":"b"},{"col 1":"c","col 2":"d"}]', rec)
+        string1 = '[{"col 1":"a","col 2":"b"},'
+        string1 = string1 + '{"col 1":"c","col 2":"d"}]'
+        self.assertEqual(string1, rec)
         val = df.to_json(orient='values')
         self.assertEqual('[["a","b"],["c","d"]]', val)
 
