@@ -25,12 +25,11 @@ import unittest
 import json
 import pandas as pd
 from xml.dom import minidom
-
 import xml.etree.ElementTree as ET
 
+class TestDameXml(unittest.TestCase):
 
-class TestDameJson(unittest.TestCase):
-
+    # XML
     def test_damexml_getelementsbytagname(self):
         # using read and loads to open
         xmldoc = minidom.parse('files/items.xml')
@@ -45,9 +44,21 @@ class TestDameJson(unittest.TestCase):
         tree = ET.parse('files/rss.xml')
         l1 = []
         for elem in tree.iter():
+            # using elem.tag
             if (elem.tag == "title"):
                 l1.append(elem.text)
         self.assertEqual(l1[0:2], ["Richard Stallman's Political Notes",
+                                   'Economic growth and fossil fuels'])
+    def test_damexml_root(self):
+        tree = ET.parse('files/rss.xml')
+        root = tree.getroot()
+        self.assertEqual(root.tag, 'rss')
+        self.assertEqual(root.attrib, {'version': '2.0'})
+        l2 = []
+        for elem in root.iter():
+            if (elem.tag == "title"):
+                l2.append(elem.text)
+        self.assertEqual(l2[0:2], ["Richard Stallman's Political Notes",
                                    'Economic growth and fossil fuels'])
 
 
