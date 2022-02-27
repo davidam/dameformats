@@ -30,7 +30,7 @@ from pprint import pprint
 class TestDameNetCDF(unittest.TestCase):
 
     def test_damenetcdf_new(self):
-        rootgrp = Dataset("test.nc", "w", format="NETCDF4")
+        rootgrp = Dataset("files/test.nc", "w", format="NETCDF4")
         self.assertEqual(rootgrp.dimensions, {})
         self.assertEqual(rootgrp.groups, {})
         rootgrp.close()
