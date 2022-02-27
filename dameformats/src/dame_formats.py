@@ -19,13 +19,11 @@
 # <https://www.gnu.org/licenses/>.
 
 
-import unidecode
+from unidecode import unidecode
 import unicodedata
 import re
 import os
 import csv
-from xml.dom import minidom
-
 
 class DameFormats():
 
