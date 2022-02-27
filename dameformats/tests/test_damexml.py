@@ -17,13 +17,11 @@
 # GNU General Public License for more details.
 
 # You should have received a copy of the GNU General Public License
-# along with damejson; see the file LICENSE.  If not, write to
+# along with dameformats; see the file LICENSE.  If not, write to
 # the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
 # Boston, MA 02110-1301 USA,
 
 import unittest
-import json
-import pandas as pd
 from xml.dom import minidom
 import xml.etree.ElementTree as ET
 
@@ -60,6 +58,10 @@ class TestDameXml(unittest.TestCase):
                 l2.append(elem.text)
         self.assertEqual(l2[0:2], ["Richard Stallman's Political Notes",
                                    'Economic growth and fossil fuels'])
+
+    def test_damexml_fromstring(self):
+        root = ET.fromstring('<a><b /><c><d /></c></a>')
+        self.assertEqual(root.tag, 'a')
 
 
 if __name__ == '__main__':
