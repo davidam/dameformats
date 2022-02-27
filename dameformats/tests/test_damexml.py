@@ -62,6 +62,9 @@ class TestDameXml(unittest.TestCase):
     def test_damexml_fromstring(self):
         root = ET.fromstring('<a><b /><c><d /></c></a>')
         self.assertEqual(root.tag, 'a')
+        self.assertEqual(root[0].tag, 'b')
+        self.assertEqual(root[1].tag, 'c')
+        self.assertEqual(root[1][0].tag, 'd')
 
 
 if __name__ == '__main__':
