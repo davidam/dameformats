@@ -72,7 +72,43 @@ class TestDameXml(unittest.TestCase):
         links = list(p.iter("a"))
         self.assertEqual(len(links), 2)
 
+    def test_damexml_parser(self):
+        parser = ET.XMLPullParser(['start', 'end'])
+        parser.feed('<p>')
+        parser.feed('</p>')
+        l0 = []
+        l1 = []
+        for event, elem in parser.read_events():
+            l0.append(event)
+            l1.append(elem)
+        self.assertEqual(len(l0), 2)
+        self.assertEqual(len(l1), 2)        
+        parser2 = ET.XMLPullParser(['start', 'end'])
+        parser2.feed('<a>')
+        parser2.feed('</a>')
+        l2 = []
+        l3 = []
+        for event2, elem2 in parser2.read_events():
+            l2.append(event2)
+            l3.append(elem2)
+        self.assertEqual(len(l2), 2)
+        self.assertEqual(len(l3), 2)
 
-
+    def test_damexml_xpath(self):
+        tree = ET.parse('files/countries.xml')
+        root = tree.getroot()
+        self.assertEqual(root.tag, 'data')
+        self.assertEqual(root.attrib, {})
+        root.findall('.')
+        years = root.findall('./country/year')
+        self.assertEqual(len(years), 2)
+        self.assertEqual(years[0].text, '2008')
+        self.assertEqual(years[1].text, '2011')        
+        ranking = root.findall('./country/rank')
+        self.assertEqual(len(ranking), 2)
+        self.assertEqual(ranking[0].attrib, {'updated': 'yes'})
+        neighborhood = root.findall('./country/neighbor')        
+        self.assertEqual(neighborhood[0].attrib, {'name': 'Austria', 'direction': 'E'})
+        
 if __name__ == '__main__':
     unittest.main()
