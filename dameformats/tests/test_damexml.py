@@ -119,7 +119,7 @@ class TestDameXml(unittest.TestCase):
         neighborhood = root.findall('./country/neighbor')
         self.assertEqual(neighborhood[0].attrib, {'name': 'Austria', 'direction': 'E'})
 
-    def test_damexml_xpath4(self):
+    def test_damexml_xpath_detect_david_gender(self):
         tree = ET.parse("files/david.html")
         root = tree.getroot()
         self.assertEqual(root.tag, 'html')
@@ -127,6 +127,20 @@ class TestDameXml(unittest.TestCase):
         divs1 = root.findall('./body/div[@class="mw-body"]/div[@class="vector-body"]')
         self.assertEqual(len(divs1), 1)
         self.assertEqual(len(divs1[0]), 8)
+        divs2 = root.findall('./body/div[@class="mw-body"]/div[@class="vector-body"]/div[@id="mw-content-text"]/div[@class="mw-parser-output"]')
+        self.assertEqual(len(divs2), 1)
+        divs3 = root.findall('./body/div[@class="mw-body"]/div[@class="vector-body"]/div[@id="mw-content-text"]/div[@class="mw-parser-output"]/table/tbody')
+        self.assertEqual(len(divs3), 2)
+        divs4 = root.findall('./body/div[@class="mw-body"]/div[@class="vector-body"]/div[@id="mw-content-text"]/div[@class="mw-parser-output"]/table/tbody/tr/td')
+        male = False
+        self.assertTrue(len(divs4) > 2)        
+        for i in divs4:
+            try:
+                if ("Male" in i.text):
+                    male = True
+            except:
+                print(i.text)
+        self.assertTrue(male)
 
 
 if __name__ == '__main__':
