@@ -76,7 +76,7 @@ class TestDameXml(unittest.TestCase):
             l0.append(event)
             l1.append(elem)
         self.assertEqual(len(l0), 2)
-        self.assertEqual(len(l1), 2)        
+        self.assertEqual(len(l1), 2)
         parser2 = ET.XMLPullParser(['start', 'end'])
         parser2.feed('<a>')
         parser2.feed('</a>')
@@ -87,7 +87,7 @@ class TestDameXml(unittest.TestCase):
             l3.append(elem2)
         self.assertEqual(len(l2), 2)
         self.assertEqual(len(l3), 2)
-        
+
     def test_damexml_xpath(self):
         tree = ET.parse("files/html.html")
         p = tree.find("body/p")
@@ -101,8 +101,8 @@ class TestDameXml(unittest.TestCase):
         self.assertEqual(len(links), 0)
         texts = list(p.itertext())
         self.assertEqual(len(texts), 1)
-        self.assertEqual(texts[0], "Moved to example.org or example.com.")        
-        
+        self.assertEqual(texts[0], "Moved to example.org or example.com.")
+
     def test_damexml_xpath3(self):
         tree = ET.parse('files/countries.xml')
         root = tree.getroot()
@@ -112,12 +112,22 @@ class TestDameXml(unittest.TestCase):
         years = root.findall('./country/year')
         self.assertEqual(len(years), 2)
         self.assertEqual(years[0].text, '2008')
-        self.assertEqual(years[1].text, '2011')        
+        self.assertEqual(years[1].text, '2011')
         ranking = root.findall('./country/rank')
         self.assertEqual(len(ranking), 2)
         self.assertEqual(ranking[0].attrib, {'updated': 'yes'})
-        neighborhood = root.findall('./country/neighbor')        
+        neighborhood = root.findall('./country/neighbor')
         self.assertEqual(neighborhood[0].attrib, {'name': 'Austria', 'direction': 'E'})
-        
+
+    def test_damexml_xpath4(self):
+        tree = ET.parse("files/david.html")
+        root = tree.getroot()
+        self.assertEqual(root.tag, 'html')
+        body = root.findall('./body')
+        divs1 = root.findall('./body/div[@class="mw-body"]/div[@class="vector-body"]')
+        self.assertEqual(len(divs1), 1)
+        self.assertEqual(len(divs1[0]), 8)
+
+
 if __name__ == '__main__':
     unittest.main()
