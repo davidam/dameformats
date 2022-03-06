@@ -72,7 +72,15 @@ class TestDameXml(unittest.TestCase):
         links = list(p.iter("a"))
         self.assertEqual(len(links), 2)
 
-
+    def test_damexml_xpath2(self):
+        tree = ET.parse("files/html.html")
+        p = tree.find("body/p[@class='xyz']")
+        links = list(p.iter("a"))
+        self.assertEqual(len(links), 0)
+        texts = list(p.itertext())
+        self.assertEqual(len(texts), 1)
+        self.assertEqual(texts[0], "Moved to example.org or example.com.")        
+        
 
 if __name__ == '__main__':
     unittest.main()
