@@ -60,6 +60,7 @@ setup(name='dameformats',
                     'dameformats.files': ['*']},
       data_files=[('dameformats', ['dameformats/runtests.sh', 'dameformats/files/exer1-interface-data.json', 'dameformats/files/partial.csv', 'dameformats/files/min.csv', 'dameformats/files/items.xml', 'dameformats/files/rss.xml', 'dameformats/files/test.nc', 'dameformats/files/example.yaml'])],
       install_requires=[
+          'pandas',
           'markdown',
           'pyyaml',
           'netCDF4',
