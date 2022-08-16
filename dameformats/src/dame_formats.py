@@ -54,9 +54,37 @@ class DameFormats():
                 l1.append(row)
         return l1
 
-    def num_columns_in_csv(self, csvpath,  *args, **kwargs):
+    def num_columns_in_csv(self, csvpath, *args, **kwargs):
         delimiter = kwargs.get('delimiter', ',')
         with open(csvpath, 'r') as csvfile:
             first_line = csvfile.readline()
             ncol = first_line.count(delimiter) + 1
         return ncol
+
+    def is_json(self, myjson):
+        # Given a path returns if exist a file that is a json file
+        with open(myjson, encoding='utf8') as f:
+            text = f.read().strip()
+        try:
+            json_object = json.loads(text)
+        except ValueError as e:
+            return False
+        f.close()
+        return True
+
+    def is_csv(self, mycsv, *args, **kwargs):
+        delimiter = kwargs.get('delimiter', ',')
+        import csv, sys
+        boolean = False
+        if (self.is_json(mycsv)):
+            boolean = False
+        else:
+            with open(mycsv) as f:
+                reader = csv.reader(f, delimiter=delimiter)
+                try:
+                    for row in reader:
+                        boolean = True
+                except csv.Error as e:
+                    return False
+        return boolean
+    
