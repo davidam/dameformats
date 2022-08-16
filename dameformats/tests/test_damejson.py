@@ -44,6 +44,14 @@ class TestDameJson(unittest.TestCase):
         tup1 = 'Red', 'Black', 'White'
         self.assertEqual(json.dumps(tup1), '["Red", "Black", "White"]')
 
+    def test_is_json(self):
+        df = DameFormats()
+        file1 = "files/exer1-interface-data.json"
+        self.assertTrue(df.is_json(file1))
+        file2 = "files/min.csv"
+        self.assertFalse(df.is_json(file2))
+
+        
     def test_damejson_pandas(self):
         df = pd.DataFrame([['a', 'b'], ['c', 'd']],
                           index=['row 1', 'row 2'],
