@@ -23,6 +23,9 @@
 
 import unittest
 import pandas as pd
+# fix for MacOS using nose
+import collections
+collections.Callable = collections.abc.Callable
 
 from src.dame_formats import DameFormats
 
@@ -57,6 +60,17 @@ class TestDameCsv(unittest.TestCase):
         n = du.num_columns_in_csv('files/partial.csv')
         self.assertEqual(n, 6)
 
+    def test_is_csv(self):
+        df = DameFormats()
+        file2 = "files/exer1-interface-data.json"
+        self.assertFalse(df.is_csv(file2))
+        file3 = "files/min.commas.csv"
+        self.assertTrue(df.is_csv(file3))
+        self.assertTrue(df.is_csv(file3, delimiter=";"))        
+        file4 = "files/min.csv"
+        self.assertTrue(df.is_csv(file4))
+
+        
 
 if __name__ == '__main__':
     unittest.main()
