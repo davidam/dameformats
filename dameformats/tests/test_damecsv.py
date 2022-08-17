@@ -24,8 +24,8 @@
 import unittest
 import pandas as pd
 from src.dame_formats import DameFormats
-import collections
 # fix for MacOS using nose
+import collections
 collections.Callable = collections.abc.Callable
 
 
