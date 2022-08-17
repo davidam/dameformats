@@ -22,14 +22,13 @@
 # Boston, MA 02110-1301 USA,
 
 import unittest
-
-from xml.dom import minidom
 import xml.etree.ElementTree as ET
+from xml.dom import minidom
+from src.dame_formats import DameFormats
 # fix for MacOS using nose
 import collections
 collections.Callable = collections.abc.Callable
 
-from src.dame_formats import DameFormats
 
 class TestDameXml(unittest.TestCase):
 
@@ -53,6 +52,7 @@ class TestDameXml(unittest.TestCase):
                 l1.append(elem.text)
         self.assertEqual(l1[0:2], ["Richard Stallman's Political Notes",
                                    'Economic growth and fossil fuels'])
+
     def test_damexml_root(self):
         tree = ET.parse('files/rss.xml')
         root = tree.getroot()
@@ -123,31 +123,43 @@ class TestDameXml(unittest.TestCase):
         self.assertEqual(len(ranking), 2)
         self.assertEqual(ranking[0].attrib, {'updated': 'yes'})
         neighborhood = root.findall('./country/neighbor')
-        self.assertEqual(neighborhood[0].attrib, {'name': 'Austria', 'direction': 'E'})
+        self.assertEqual(neighborhood[0].attrib,
+                         {'name': 'Austria', 'direction': 'E'})
 
     def test_damexml_xpath_detect_david_gender(self):
         tree = ET.parse("files/david.html")
         root = tree.getroot()
         self.assertEqual(root.tag, 'html')
         body = root.findall('./body')
-        divs1 = root.findall('./body/div[@class="mw-body"]/div[@class="vector-body"]')
+        str1 = './body/div[@class="mw-body"]/div[@class="vector-body"]'
+        divs1 = root.findall(str1)
         self.assertEqual(len(divs1), 1)
         self.assertEqual(len(divs1[0]), 8)
-        divs2 = root.findall('./body/div[@class="mw-body"]/div[@class="vector-body"]/div[@id="mw-content-text"]/div[@class="mw-parser-output"]')
+        str2 = './body/div[@class="mw-body"]/div[@class="vector-body"]'
+        str2 = str2 + '/div[@id="mw-content-text"]'
+        str2 = str2 + '/div[@class="mw-parser-output"]'
+        divs2 = root.findall(str2)
         self.assertEqual(len(divs2), 1)
-        divs3 = root.findall('./body/div[@class="mw-body"]/div[@class="vector-body"]/div[@id="mw-content-text"]/div[@class="mw-parser-output"]/table/tbody')
+        str3 = './body/div[@class="mw-body"]/div[@class="vector-body"]'
+        str3 = str3 + '/div[@id="mw-content-text"]'
+        str3 = str3 + '/div[@class="mw-parser-output"]/table/tbody'
+        divs3 = root.findall(str3)
         self.assertEqual(len(divs3), 2)
-        divs4 = root.findall('./body/div[@class="mw-body"]/div[@class="vector-body"]/div[@id="mw-content-text"]/div[@class="mw-parser-output"]/table/tbody/tr/td')
+        str4 = './body/div[@class="mw-body"]/div[@class="vector-body"]'
+        str4 = str4 + '/div[@id="mw-content-text"]'
+        str4 = str4 + '/div[@class="mw-parser-output"]'
+        str4 = str4 + '/table/tbody/tr/td'
+        divs4 = root.findall(str4)
         male = False
-        self.assertTrue(len(divs4) > 2)        
+        self.assertTrue(len(divs4) > 2)
+        print(divs4)
+        l0 = []
         for i in divs4:
-            try:
-                if ("Male" in i.text):
-                    male = True
-            except:
-                print(i.text)
+            l0.append(i.text)
+        if ("Male" in l0):
+            male = True
         self.assertTrue(male)
 
-        
+
 if __name__ == '__main__':
     unittest.main()
