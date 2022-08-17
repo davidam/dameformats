@@ -23,11 +23,10 @@
 
 import unittest
 import pandas as pd
-# fix for MacOS using nose
-import collections
-collections.Callable = collections.abc.Callable
-
 from src.dame_formats import DameFormats
+import collections
+# fix for MacOS using nose
+collections.Callable = collections.abc.Callable
 
 
 class TestDameCsv(unittest.TestCase):
@@ -66,11 +65,10 @@ class TestDameCsv(unittest.TestCase):
         self.assertFalse(df.is_csv(file2))
         file3 = "files/min.commas.csv"
         self.assertTrue(df.is_csv(file3))
-        self.assertTrue(df.is_csv(file3, delimiter=";"))        
+        self.assertTrue(df.is_csv(file3, delimiter=";"))
         file4 = "files/min.csv"
         self.assertTrue(df.is_csv(file4))
 
-        
 
 if __name__ == '__main__':
     unittest.main()

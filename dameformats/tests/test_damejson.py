@@ -24,11 +24,11 @@
 import unittest
 import json
 import pandas as pd
+from src.dame_formats import DameFormats
 # fix for MacOS using nose
 import collections
 collections.Callable = collections.abc.Callable
 
-from src.dame_formats import DameFormats
 
 class TestDameJson(unittest.TestCase):
 
@@ -55,7 +55,6 @@ class TestDameJson(unittest.TestCase):
         file2 = "files/min.csv"
         self.assertFalse(df.is_json(file2))
 
-        
     def test_damejson_pandas(self):
         df = pd.DataFrame([['a', 'b'], ['c', 'd']],
                           index=['row 1', 'row 2'],
