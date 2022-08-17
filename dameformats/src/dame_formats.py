@@ -18,13 +18,14 @@
 # along with Dameformats in the file LICENSE.  If not, see
 # <https://www.gnu.org/licenses/>.
 
-
 from unidecode import unidecode
-import unicodedata
+from xml.dom.minidom import parse, parseString
 import re
 import os
 import csv
 import json
+import sys
+
 
 class DameFormats():
 
@@ -75,7 +76,6 @@ class DameFormats():
 
     def is_csv(self, mycsv, *args, **kwargs):
         delimiter = kwargs.get('delimiter', ',')
-        import csv, sys
         boolean = False
         if (self.is_json(mycsv)):
             boolean = False
@@ -88,4 +88,15 @@ class DameFormats():
                 except csv.Error as e:
                     return False
         return boolean
-    
+
+    def is_xml(self, myxml):
+        try:
+            parse(myxml)
+            if ("<xml.dom.minidom.Document object" in str(document)):
+                bool0 = True
+            else:
+                bool0 = False
+        finally:
+            bool0 = False
+            return False
+        return bool0
