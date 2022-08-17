@@ -24,7 +24,11 @@
 import unittest
 import json
 import pandas as pd
+# fix for MacOS using nose
+import collections
+collections.Callable = collections.abc.Callable
 
+from src.dame_formats import DameFormats
 
 class TestDameJson(unittest.TestCase):
 

@@ -26,6 +26,10 @@ import json
 import pandas as pd
 import yaml
 
+# fix for MacOS using nose
+import collections
+collections.Callable = collections.abc.Callable
+
 
 class TestDameYaml(unittest.TestCase):
 

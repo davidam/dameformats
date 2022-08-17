@@ -22,8 +22,14 @@
 # Boston, MA 02110-1301 USA,
 
 import unittest
+
 from xml.dom import minidom
 import xml.etree.ElementTree as ET
+# fix for MacOS using nose
+import collections
+collections.Callable = collections.abc.Callable
+
+from src.dame_formats import DameFormats
 
 class TestDameXml(unittest.TestCase):
 
@@ -142,6 +148,6 @@ class TestDameXml(unittest.TestCase):
                 print(i.text)
         self.assertTrue(male)
 
-
+        
 if __name__ == '__main__':
     unittest.main()
