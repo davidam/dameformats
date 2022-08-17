@@ -160,6 +160,11 @@ class TestDameXml(unittest.TestCase):
             male = True
         self.assertTrue(male)
 
+    def test_is_xml(self):
+        df = DameFormats()
+        file2 = "files/items.xml"
+        self.assertFalse(df.is_xml(file2))
+        
 
 if __name__ == '__main__':
     unittest.main()
