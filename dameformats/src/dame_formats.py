@@ -47,9 +47,10 @@ class DameFormats():
         # make a list from a csv file
         header = kwargs.get('header', False)
         delimiter = kwargs.get('delimiter', ',')
+        quotechar = kwargs.get('quotechar', "'")
         l1 = []
         with open(csvpath) as csvfile:
-            csvreader = csv.reader(csvfile, delimiter=delimiter, quotechar='|')
+            csvreader = csv.reader(csvfile, delimiter=delimiter, quotechar=quotechar)
             if header:
                 next(csvreader, None)
             for row in csvreader:
