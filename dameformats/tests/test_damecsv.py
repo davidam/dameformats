@@ -22,6 +22,7 @@
 # Boston, MA 02110-1301 USA,
 
 import unittest
+import csv
 import pandas as pd
 from src.dame_formats import DameFormats
 # fix for MacOS using nose
@@ -30,6 +31,14 @@ collections.Callable = collections.abc.Callable
 
 
 class TestDameCsv(unittest.TestCase):
+    
+    def test_damecsv_escapechar(self):
+        with open('files/customers.csv', 'rt') as f:
+            csv_reader = csv.reader(f, escapechar='\\')
+            l = []
+            for row in csv_reader:
+                l.append(row)
+        self.assertEqual(l[1], ['1','Hannah','4891 Blackwell Street, Anchorage, Alaska','99503'])
 
     def test_damecsv_csvcolumn2list(self):
         du = DameFormats()
@@ -73,7 +82,6 @@ class TestDameCsv(unittest.TestCase):
         self.assertTrue(df.is_csv(file3, delimiter=";"))
         file4 = "files/min.csv"
         self.assertTrue(df.is_csv(file4))
-
 
 if __name__ == '__main__':
     unittest.main()
