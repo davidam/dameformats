@@ -44,6 +44,7 @@ class TestDameCsv(unittest.TestCase):
 
     def test_damecsv_csv2list(self):
         du = DameFormats()
+        # simple test
         l1 = du.csv2list('files/min.csv')
         self.assertEqual(['"first_name"', '"middle_name"',
                           '"last_name"', '"full_name"', '"gender"',
@@ -53,6 +54,10 @@ class TestDameCsv(unittest.TestCase):
                          l1[1])
         self.assertEqual(['"raul"', '""', '"serapioni"', '"raul serapioni"',
                           '"m"', '"zbmath"'], l1[2])
+        # testing quotechar
+        l2 = du.csv2list('files/addresses.csv', quotechar="'")
+        self.assertEqual(['Jerry', '44',
+                          '2776 McDowell Street, Nashville, Tennessee'], l2[1])
 
     def test_damecsv_num_columns_in_csv(self):
         du = DameFormats()
