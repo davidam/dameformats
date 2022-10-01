@@ -3,8 +3,8 @@
 
 # Copyright (C) 2021  David Arroyo Menéndez
 
-# Author: David Arroyo Menéndez <davidam@gnu.org>
-# Maintainer: David Arroyo Menéndez <davidam@gnu.org>
+# Author: David Arroyo Menéndez <davidam@gmail.com>
+# Maintainer: David Arroyo Menéndez <davidam@gmail.com>
 
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -39,7 +39,7 @@ with open(path.join(this_directory, 'README.md')) as f:
 
 
 setup(name='dameformats',
-      version='0.0.13',
+      version='0.1.3',
       description='Learning Formats from Tests by David Arroyo Menéndez',
       long_description=long_description,
       classifiers=[
@@ -51,14 +51,14 @@ setup(name='dameformats',
       keywords='formats tests',
       url='http://github.com/davidam/dameformats',
       author='David Arroyo Menéndez',
-      author_email='davidam@gnu.org',
+      author_email='davidam@gmail.com',
       license='GPLv3',
       packages=['dameformats', 'dameformats.src', 'dameformats.tests', 'dameformats.files'],
       package_dir={'dameformats': 'dameformats', 'dameformats.src': 'dameformats/src', 'dameformats.tests': 'dameformats/tests', 'dameformats.files': 'dameformats/files'},
       package_data={'dameformats.tests': ['*'],
                     'dameformats.src': ['*'],
                     'dameformats.files': ['*']},
-      data_files=[('dameformats', ['dameformats/runtests.sh', 'dameformats/files/exer1-interface-data.json', 'dameformats/files/partial.csv', 'dameformats/files/min.csv', 'dameformats/files/items.xml', 'dameformats/files/rss.xml', 'dameformats/files/test.nc', 'dameformats/files/example.yaml'])],
+      data_files=[('dameformats', ['dameformats/runtests.sh', 'dameformats/files/exer1-interface-data.json', 'dameformats/files/partial.csv', 'dameformats/files/min.csv', 'dameformats/files/addresses.csv', 'dameformats/files/items.xml', 'dameformats/files/rss.xml', 'dameformats/files/test.nc', 'dameformats/files/example.yaml'])],
       install_requires=[
           'pandas',
           'markdown',
