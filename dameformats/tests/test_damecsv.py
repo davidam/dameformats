@@ -88,6 +88,9 @@ class TestDameCsv(unittest.TestCase):
         file1 = "files/salary.dta"
         df.dta2csv(file1)
         self.assertTrue(df.is_csv(file1+".csv"))
+        file2 = "files/gender_JMLA.dta"
+        df.dta2csv(file2)
+        self.assertTrue(df.is_csv(file2+".csv"))
         
 if __name__ == '__main__':
     unittest.main()
