@@ -83,5 +83,11 @@ class TestDameCsv(unittest.TestCase):
         file4 = "files/min.csv"
         self.assertTrue(df.is_csv(file4))
 
+    def test_dta2csv(self):
+        df = DameFormats()
+        file1 = "files/salary.dta"
+        df.dta2csv(file1)
+        self.assertTrue(df.is_csv(file1+".csv"))
+        
 if __name__ == '__main__':
     unittest.main()

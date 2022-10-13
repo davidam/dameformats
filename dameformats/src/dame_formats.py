@@ -20,6 +20,7 @@
 
 from unidecode import unidecode
 from xml.dom.minidom import parse, parseString
+import pandas as pd
 import re
 import os
 import csv
@@ -101,3 +102,8 @@ class DameFormats():
             bool0 = False
             return False
         return bool0
+
+    def dta2csv(self, path):
+        data = pd.io.stata.read_stata(path)
+        data.to_csv(path+'.csv')
+        return True
