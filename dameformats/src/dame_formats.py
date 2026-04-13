@@ -100,6 +100,7 @@ class DameFormats():
                 bool0 = False
         finally:
             bool0 = False
+            return False
         return bool0
 
     def dta2csv(self, path):
