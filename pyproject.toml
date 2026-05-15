@@ -17,12 +17,12 @@ name = "dameformats"  # Required
 #
 # For a discussion on single-sourcing the version, see
 # https://packaging.python.org/guides/single-sourcing-package-version/
-version = "0.1.4"  # Required
+version = "0.1.5.post1"  # Required
 
 # This is a one-line description or tagline of what your project does. This
 # corresponds to the "Summary" metadata field:
 # https://packaging.python.org/specifications/core-metadata/#summary
-description = "Learning Formats from Tests by David Arroyo Menéndez'"  # Optional
+description = "Learning Python Formats from Tests by David Arroyo Menéndez'"  # Optional
 
 # This is an optional longer description of your project that represents
 # the body of text which users will see when they visit PyPI.
@@ -51,7 +51,7 @@ license = {file = "LICENSE"}
 # Note that this is a list of additional keywords, separated
 # by commas, to be used to assist searching for the distribution in a
 # larger catalog.
-keywords = ["formats", "dame", "csv", "yaml", "json", "xml", "netcdf", "development"]  # Optional
+keywords = ["formats", "dame", "csv", "dta", "yaml", "json", "xml", "netcdf", "development"]  # Optional
 
 # This should be your name or the name of the organization who originally
 # authored the project, and a valid email address corresponding to the name
@@ -146,8 +146,23 @@ main = "main:main"
 [tool.setuptools]
 # If there are data files included in your packages that need to be
 # installed, specify them here.
-package-data = {"damealgorithms" = ['damealgorithms/files/pg1513.txt', 'damealgorithms/runtests.sh', 'damealgorithms/files/tmp.txt', 'damealgorithms/files/tmp2.txt'] }
-
+package-data = {"dameformats" = ['dameformats/runtests.sh',
+                                   'dameformats/files/exer1-interface-data.json',
+                                   'dameformats/files/partial.csv' ,
+                                   'dameformats/files/min.csv',
+                                   'dameformats/files/min.commas.csv',
+                                   'dameformats/files/addresses.csv',
+                                   'dameformats/files/customers.csv',
+                                   'dameformats/files/gender_JMLA.dta',                                   
+                                   'dameformats/files/salary.dta',
+                                   'dameformats/files/items.xml',
+                                   'dameformats/files/david.html',
+                                   'dameformats/files/html.html',
+                                   'dameformats/files/countries.xml',
+                                   'dameformats/files/rss.xml',
+                                   'dameformats/files/test.nc',
+                                   'dameformats/files/example.yaml'] }
+				   
 [build-system]
 # These are the assumed default build requirements from pip:
 # https://pip.pypa.io/en/stable/reference/pip/#pep-517-and-518-support
