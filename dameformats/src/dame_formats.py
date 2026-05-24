@@ -20,6 +20,7 @@
 
 from unidecode import unidecode
 from xml.dom.minidom import parse, parseString
+import numpy as np
 import pandas as pd
 import re
 import os
@@ -44,6 +45,21 @@ class DameFormats():
                 l1.append(row[position])
         return l1
 
+    def csvcolumn2numpy(self, csvpath,  *args, **kwargs):
+        # make a numpy list from a column in a csv file
+        position = kwargs.get('position', 0)
+        header = kwargs.get('header', True)
+        delimiter = kwargs.get('delimiter', ',')
+        l1 = np.array([])
+        with open(csvpath) as csvfile:
+            csvreader = csv.reader(csvfile, delimiter=delimiter, quotechar='|')
+            if header:
+                next(csvreader, None)
+            for row in csvreader:
+                a = np.array(row[position])
+                l1 = np.append(l1, a)
+        return l1
+    
     def csv2list(self, csvpath,  *args, **kwargs):
         # make a list from a csv file
         header = kwargs.get('header', False)
