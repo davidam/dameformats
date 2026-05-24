@@ -1,11 +1,45 @@
 
-# To execute tests:<a id="sec-1" name="sec-1"></a>
+# Table of Contents
+
+1.  [To execute tests:](#org2bd619c)
+    1.  [All test](#orgbb6dbb7)
+    2.  [Single test's file](#orga244243)
+    3.  [Single test](#org9b44860)
+2.  [Pypi](#org65e6f1f)
+
+
+<a id="org2bd619c"></a>
+
+# To execute tests:
+
+
+<a id="orgbb6dbb7"></a>
+
+## All test
 
     $ cd dameformats
     $ ./runtests.sh
-    $ nosetests3 tests
 
-# Pypi<a id="sec-2" name="sec-2"></a>
+
+<a id="orga244243"></a>
+
+## Single test's file
+
+    $ cd dameformats
+    $ pytest tests
+
+
+<a id="org9b44860"></a>
+
+## Single test
+
+    $ cd dameformats
+    $ pytest tests/test_damecsv.py::TestDameCsv::test_damecsv_csvcolumn2list 
+
+
+<a id="org65e6f1f"></a>
+
+# Pypi
 
 -   To install from local:
 
@@ -25,3 +59,4 @@
     $ cd /tmp/funny
     $ source bin/activate
     $ pip3 install dameformats
+

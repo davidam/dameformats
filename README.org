@@ -1,9 +1,19 @@
 
 * To execute tests:
+** All test
 #+BEGIN_SRC sh
 $ cd dameformats
 $ ./runtests.sh
-$ nosetests3 tests
+#+END_SRC
+** Single test's file
+#+BEGIN_SRC sh
+$ cd dameformats
+$ pytest tests
+#+END_SRC
+** Single test
+#+BEGIN_SRC sh
+$ cd dameformats
+$ pytest tests/test_damecsv.py::TestDameCsv::test_damecsv_csvcolumn2list 
 #+END_SRC
 
 * Pypi
