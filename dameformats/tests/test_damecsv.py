@@ -24,6 +24,7 @@
 import unittest
 import csv
 import pandas as pd
+import numpy as np
 from src.dame_formats import DameFormats
 # fix for MacOS using nose
 import collections
@@ -50,6 +51,18 @@ class TestDameCsv(unittest.TestCase):
                           '"gregory"', '"lester"', '"claude"', '"martin"',
                           '"vlad"', '"pasquale"', '"lourdes"', '"bruno"',
                           '"thomas"'], l1)
+
+    def test_damecsv_csvcolumn2numpy(self):
+        du = DameFormats()
+        l1 = du.csvcolumn2numpy('files/partial.csv', 0, header=True)
+        res = np.array(['"pierre"', '"raul"', '"adriano"', '"ralf"',
+                          '"teppei"', '"guillermo"', '"catherine"', '"sabina"',
+                          '"ralf"', '"karl"', '"sushil"', '"clemens"',
+                          '"gregory"', '"lester"', '"claude"', '"martin"',
+                          '"vlad"', '"pasquale"', '"lourdes"', '"bruno"',
+                          '"thomas"'])
+        self.assertTrue(np.array_equal(l1, res))
+        
 
     def test_damecsv_csv2list(self):
         du = DameFormats()
