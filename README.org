@@ -18,7 +18,7 @@ $ ./runtests.sh
 ** Single test's file
 #+BEGIN_SRC sh
 $ cd dameformats
-$ pytest tests
+$ pytest tests/test_damecsv.py
 #+END_SRC
 ** Single test
 #+BEGIN_SRC sh
