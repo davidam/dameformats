@@ -1,19 +1,31 @@
 
 # Table of Contents
 
-1.  [To execute tests:](#org2bd619c)
-    1.  [All test](#orgbb6dbb7)
-    2.  [Single test's file](#orga244243)
-    3.  [Single test](#org9b44860)
-2.  [Pypi](#org65e6f1f)
+1.  [Installing dameformats](#org5662f09)
+2.  [Executing tests:](#orgd89d081)
+    1.  [All test](#org20308ce)
+    2.  [Single test's file](#orgc5cc4d4)
+    3.  [Single test](#org7c10c13)
+3.  [Making a Pypi package](#org3624990)
 
 
-<a id="org2bd619c"></a>
+<a id="org5662f09"></a>
 
-# To execute tests:
+# Installing dameformats
+
+    $ mkdir venv-dameformats
+    $ python3 -m venv venv-dameformats
+    $ cd venv-dameformats
+    $ source bin/activate
+    $ pip3 install dameformats
 
 
-<a id="orgbb6dbb7"></a>
+<a id="orgd89d081"></a>
+
+# Executing tests:
+
+
+<a id="org20308ce"></a>
 
 ## All test
 
@@ -21,7 +33,7 @@
     $ ./runtests.sh
 
 
-<a id="orga244243"></a>
+<a id="orgc5cc4d4"></a>
 
 ## Single test's file
 
@@ -29,7 +41,7 @@
     $ pytest tests
 
 
-<a id="org9b44860"></a>
+<a id="org7c10c13"></a>
 
 ## Single test
 
@@ -37,9 +49,9 @@
     $ pytest tests/test_damecsv.py::TestDameCsv::test_damecsv_csvcolumn2list 
 
 
-<a id="org65e6f1f"></a>
+<a id="org3624990"></a>
 
-# Pypi
+# Making a Pypi package
 
 -   To install from local:
 
@@ -47,16 +59,9 @@
 
 -   To install create tar.gz in dist directory:
 
-    $ python3 setup.py register sdist
+    $ python3 -m build
 
 -   To upload to pypi:
 
     $ twine upload dist/dameformats-0.1.tar.gz
-
--   You can install from Internet in a python virtual environment to check:
-
-    $ python3 -m venv /tmp/funny
-    $ cd /tmp/funny
-    $ source bin/activate
-    $ pip3 install dameformats
 
