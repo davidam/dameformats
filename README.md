@@ -1,15 +1,15 @@
 
 # Table of Contents
 
-1.  [Installing dameformats](#org5662f09)
-2.  [Executing tests:](#orgd89d081)
-    1.  [All test](#org20308ce)
-    2.  [Single test's file](#orgc5cc4d4)
-    3.  [Single test](#org7c10c13)
-3.  [Making a Pypi package](#org3624990)
+1.  [Installing dameformats](#org002e3dc)
+2.  [Executing tests:](#org84285a2)
+    1.  [All test](#org8c61579)
+    2.  [Single test's file](#orgfdef3f5)
+    3.  [Single test](#orgc56729a)
+3.  [Making a Pypi package](#orgf4000c5)
 
 
-<a id="org5662f09"></a>
+<a id="org002e3dc"></a>
 
 # Installing dameformats
 
@@ -20,12 +20,12 @@
     $ pip3 install dameformats
 
 
-<a id="orgd89d081"></a>
+<a id="org84285a2"></a>
 
 # Executing tests:
 
 
-<a id="org20308ce"></a>
+<a id="org8c61579"></a>
 
 ## All test
 
@@ -33,15 +33,15 @@
     $ ./runtests.sh
 
 
-<a id="orgc5cc4d4"></a>
+<a id="orgfdef3f5"></a>
 
 ## Single test's file
 
     $ cd dameformats
-    $ pytest tests
+    $ pytest tests/test_damecsv.py
 
 
-<a id="org7c10c13"></a>
+<a id="orgc56729a"></a>
 
 ## Single test
 
@@ -49,7 +49,7 @@
     $ pytest tests/test_damecsv.py::TestDameCsv::test_damecsv_csvcolumn2list 
 
 
-<a id="org3624990"></a>
+<a id="orgf4000c5"></a>
 
 # Making a Pypi package
 
