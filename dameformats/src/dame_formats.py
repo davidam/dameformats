@@ -59,7 +59,7 @@ class DameFormats():
                 a = np.array(row[position])
                 l1 = np.append(l1, a)
         return l1
-    
+
     def csv2list(self, csvpath,  *args, **kwargs):
         # make a list from a csv file
         header = kwargs.get('header', False)
@@ -110,13 +110,12 @@ class DameFormats():
     def is_xml(self, myxml):
         try:
             parse(myxml)
-            if ("<xml.dom.minidom.Document object" in str(document)):
+            if ("<xml.dom.minidom.Document object" in str(myxml)):
                 bool0 = True
             else:
                 bool0 = False
         finally:
             bool0 = False
-            return False
         return bool0
 
     def dta2csv(self, path):
